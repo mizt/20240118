@@ -15,7 +15,16 @@ try {
 			}
 		}
 	}
-	execSync("./node_modules/http-server/bin/http-server ./docs -p 8080　& sleep 1; open http://localhost:8080/");
+	
+	const date = new Date();
+	const timestamp = date.getTime();
+	
+	execSync(`
+cd ${__dirname}
+set -eu
+sed -e "s/<p>test<\\/p>/<p>${date}<\\/p>/" ./index.html > ./docs/index.html
+./node_modules/http-server/bin/http-server ./docs -p 8080　& sleep 1; open http://localhost:8080/?t=${timestamp}
+`);
 }
 catch(e) {
 	err = true;
