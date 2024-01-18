@@ -15,7 +15,7 @@ try {
 			}
 		}
 	}
-	execSync("./node_modules/http-server/bin/http-server ./docs -p 8080　& open http://localhost:8080/");
+	execSync("./node_modules/http-server/bin/http-server ./docs -p 8080　& sleep 1; open http://localhost:8080/");
 }
 catch(e) {
 	err = true;
