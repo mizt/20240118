@@ -1,7 +1,9 @@
 const { execSync } = require("child_process");
 
 let err = false;
+
 try {
+	
 	const result = execSync("ps -e | grep http-server");
 	if(result&&result.length) {
 		if(result[result.length-1]==="\n") result = result.slice(0,-1);
@@ -27,8 +29,18 @@ set -eu
 #./app/argument test
 ./app/argument 100
 `)
+	
+for(var n=0; n<10; n++) {
+	execSync(`
+cd ${__dirname}
+set -eu
+./app/argument ${n}
+`)
+}
 
 execSync(`
+cd ${__dirname}
+set -eu
 sed -e "s/<p>test<\\/p>/<p>${date}<\\/p>/" ./index.html > ./docs/index.html
 ./node_modules/http-server/bin/http-server ./docs -p 8080　& sleep 1; open http://localhost:8080/?t=${timestamp}
 `);
