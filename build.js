@@ -22,7 +22,13 @@ cd ${__dirname}
 set -eu
 ./app/build.sh
 #./app/failure
-./app/success
+#./app/success
+#./app/argument
+#./app/argument test
+./app/argument 100
+`)
+
+execSync(`
 sed -e "s/<p>test<\\/p>/<p>${date}<\\/p>/" ./index.html > ./docs/index.html
 ./node_modules/http-server/bin/http-server ./docs -p 8080　& sleep 1; open http://localhost:8080/?t=${timestamp}
 `);
