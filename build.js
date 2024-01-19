@@ -49,4 +49,6 @@ catch(e) {
 	err = true;
 }
 
-console.log(err);
+if(err) {
+	process.exit(3);
+}
