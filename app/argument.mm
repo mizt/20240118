@@ -9,7 +9,7 @@ class App : public Exit  {
 			return [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
 		}
 	
-		const NSRegularExpression *Number = regularExpression(@"[0-9]+");
+		const NSRegularExpression *UINT = regularExpression(@"[0-9]+");
 			
 		bool match(NSString *command,const NSRegularExpression *regexp) {
 			NSTextCheckingResult *match;
@@ -17,7 +17,7 @@ class App : public Exit  {
 			return (match&&command.length==match.range.length)?true:false;
 		}
 	
-		bool isNumber(NSString *command) { return match(command,this->Number); }
+		bool isUINT(NSString *command) { return match(command,this->UINT); }
 	
 	public:
 	
@@ -27,7 +27,7 @@ class App : public Exit  {
 			
 			if(args.count>=2) {
 				
-				if(this->isNumber(args[1])) {
+				if(this->isUINT(args[1])) {
 					NSLog(@"%d",[args[1] intValue]);
 					err = false;
 				}
