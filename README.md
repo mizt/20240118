@@ -1,4 +1,4 @@
 ```
-./setup.sh
-node ./build.js
+$ ./setup.sh
+$ node ./build.js
 ```
