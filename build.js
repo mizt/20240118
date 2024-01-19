@@ -38,7 +38,7 @@ set -eu
 `)
 }
 
-execSync(`
+	execSync(`
 cd ${__dirname}
 set -eu
 sed -e "s/<p>test<\\/p>/<p>${date}<\\/p>/" ./index.html > ./docs/index.html
